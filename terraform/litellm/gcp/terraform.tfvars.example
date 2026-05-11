@@ -1,0 +1,39 @@
+project = "my-gcp-project"
+region  = "us-central1"
+name    = "litellm"
+
+# Component images. Defaults pull from GHCR main-stable (public). To use
+# private images, mirror them into Artifact Registry first — Cloud Run
+# only authenticates against AR / gcr.io.
+# gateway_image = "us-central1-docker.pkg.dev/my-gcp-project/litellm/gateway:v1.55.0"
+# backend_image = "us-central1-docker.pkg.dev/my-gcp-project/litellm/backend:v1.55.0"
+# ui_image      = "us-central1-docker.pkg.dev/my-gcp-project/litellm/ui:v1.55.0"
+
+# ---------- proxy_config (mirrors helm gateway.config.proxy_config) ----------
+# proxy_config = {
+#   model_list = [
+#     {
+#       model_name = "gpt-4o"
+#       litellm_params = {
+#         model   = "openai/gpt-4o"
+#         api_key = "os.environ/OPENAI_API_KEY"
+#       }
+#     },
+#   ]
+#   general_settings = {
+#     master_key   = "os.environ/LITELLM_MASTER_KEY"
+#     database_url = "os.environ/DATABASE_URL"
+#   }
+# }
+
+# ---------- Extra env / secrets ----------
+# gateway_extra_env = {
+#   LANGFUSE_HOST = "https://us.cloud.langfuse.com"
+# }
+
+# Secret Manager resource IDs (NOT secret values). The Cloud Run SA auto-gains
+# roles/secretmanager.secretAccessor on every secret listed here.
+# gateway_extra_secrets = {
+#   OPENAI_API_KEY    = "projects/my-gcp-project/secrets/openai-api-key"
+#   ANTHROPIC_API_KEY = "projects/my-gcp-project/secrets/anthropic-api-key"
+# }
